@@ -18,15 +18,15 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
       </div>
       
-      {/* Animated ambient glows */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
-        {/* Pulsing glow 1 - top right, 8s cycle - BRIGHT BLUE */}
+      {/* Animated ambient glows - subtle and localized */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Pulsing glow 1 - top right corner, 8s cycle */}
         <motion.div
-          className="absolute top-[15%] right-[20%] w-[300px] h-[300px] rounded-full blur-[100px]"
-          style={{ backgroundColor: "rgba(59, 130, 246, 0.5)" }}
+          className="absolute top-[10%] right-[10%] w-[120px] h-[120px] rounded-full blur-[60px]"
+          style={{ backgroundColor: "rgba(100, 140, 200, 0.25)" }}
           animate={{
-            opacity: [0.2, 0.7, 0.2],
-            scale: [1, 1.3, 1],
+            opacity: [0, 0.4, 0],
+            scale: [0.8, 1.1, 0.8],
           }}
           transition={{
             duration: 8,
@@ -35,51 +35,35 @@ export function Hero() {
           }}
         />
         
-        {/* Pulsing glow 2 - bottom left, 10s cycle - NAVY/INDIGO */}
+        {/* Pulsing glow 2 - bottom left corner, 10s cycle */}
         <motion.div
-          className="absolute bottom-[20%] left-[15%] w-[350px] h-[350px] rounded-full blur-[120px]"
-          style={{ backgroundColor: "rgba(99, 102, 241, 0.45)" }}
+          className="absolute bottom-[25%] left-[8%] w-[100px] h-[100px] rounded-full blur-[50px]"
+          style={{ backgroundColor: "rgba(120, 130, 180, 0.3)" }}
           animate={{
-            opacity: [0.15, 0.6, 0.15],
-            scale: [1, 1.25, 1],
+            opacity: [0, 0.35, 0],
+            scale: [0.9, 1.15, 0.9],
           }}
           transition={{
             duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 3,
+            delay: 4,
           }}
         />
         
-        {/* Pulsing glow 3 - center, 12s cycle - LARGER SOFT BLUE */}
+        {/* Pulsing glow 3 - right side middle, 12s cycle */}
         <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[150px]"
-          style={{ backgroundColor: "rgba(56, 189, 248, 0.35)" }}
+          className="absolute top-[45%] right-[5%] w-[80px] h-[80px] rounded-full blur-[40px]"
+          style={{ backgroundColor: "rgba(130, 150, 210, 0.35)" }}
           animate={{
-            opacity: [0.1, 0.5, 0.1],
-            scale: [0.8, 1.2, 0.8],
+            opacity: [0, 0.45, 0],
+            scale: [0.85, 1.2, 0.85],
           }}
           transition={{
             duration: 12,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 5,
-          }}
-        />
-        
-        {/* Wandering accent glow - moves across screen */}
-        <motion.div
-          className="absolute w-[200px] h-[200px] rounded-full blur-[80px]"
-          style={{ backgroundColor: "rgba(139, 92, 246, 0.5)" }}
-          animate={{
-            x: ["10vw", "60vw", "30vw", "10vw"],
-            y: ["20vh", "50vh", "70vh", "20vh"],
-            opacity: [0.2, 0.6, 0.3, 0.2],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut",
+            delay: 6,
           }}
         />
       </div>
