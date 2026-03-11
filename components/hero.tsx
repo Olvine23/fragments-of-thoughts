@@ -18,10 +18,70 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
       </div>
       
-      {/* Subtle ambient glow */}
+      {/* Animated ambient glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Base ambient glows */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
+        
+        {/* Pulsing glow 1 - top right, 8s cycle */}
+        <motion.div
+          className="absolute top-1/5 right-1/4 w-64 h-64 bg-primary/15 rounded-full blur-3xl"
+          animate={{
+            opacity: [0.1, 0.4, 0.1],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        
+        {/* Pulsing glow 2 - bottom left, 10s cycle with delay */}
+        <motion.div
+          className="absolute bottom-1/3 left-1/5 w-72 h-72 bg-accent/12 rounded-full blur-3xl"
+          animate={{
+            opacity: [0.08, 0.35, 0.08],
+            scale: [1, 1.15, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3,
+          }}
+        />
+        
+        {/* Pulsing glow 3 - center, 12s cycle */}
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/8 rounded-full blur-3xl"
+          animate={{
+            opacity: [0.05, 0.2, 0.05],
+            scale: [0.9, 1.1, 0.9],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 5,
+          }}
+        />
+        
+        {/* Subtle wandering glow - moves slowly */}
+        <motion.div
+          className="absolute w-48 h-48 bg-primary/20 rounded-full blur-3xl"
+          animate={{
+            x: ["20%", "70%", "40%", "20%"],
+            y: ["30%", "60%", "80%", "30%"],
+            opacity: [0.1, 0.3, 0.15, 0.1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
       </div>
       
       <div className="relative max-w-3xl mx-auto text-center">
