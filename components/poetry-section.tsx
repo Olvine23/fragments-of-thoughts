@@ -1,10 +1,12 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 const poems = [
   {
     title: "Dusk",
+    image: "/images/poetry-dusk.jpg",
     lines: [
       "The sun dips low, a final bow",
       "to shadows stretching, lengthening now.",
@@ -19,6 +21,7 @@ const poems = [
   },
   {
     title: "Untitled (For You)",
+    image: "/images/poetry-untitled.jpg",
     lines: [
       "You exist somewhere between",
       "my waking and my dreaming—",
@@ -33,6 +36,7 @@ const poems = [
   },
   {
     title: "3 AM",
+    image: "/images/poetry-3am.jpg",
     lines: [
       "The house breathes differently at night,",
       "settling into itself like an old friend.",
@@ -47,13 +51,13 @@ const poems = [
 export function PoetrySection() {
   return (
     <section id="poetry" className="px-6 py-24">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mb-12"
+          className="mb-16"
         >
           <h2 className="font-serif text-3xl md:text-4xl font-light mb-4">Poetry</h2>
           <p className="text-muted-foreground">Words arranged in patterns of feeling.</p>
@@ -69,16 +73,30 @@ export function PoetrySection() {
               viewport={{ once: true }}
               className="group"
             >
-              <div className="p-6 rounded-lg bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-500 h-full">
-                <h3 className="font-serif text-xl font-medium mb-6 text-primary/80 group-hover:text-primary transition-colors duration-300">
-                  {poem.title}
-                </h3>
-                <div className="font-serif text-sm leading-loose text-foreground/80">
-                  {poem.lines.map((line, lineIndex) => (
-                    <p key={lineIndex} className={line === "" ? "h-4" : ""}>
-                      {line}
-                    </p>
-                  ))}
+              <div className="overflow-hidden rounded-xl bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-500 h-full">
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={poem.image}
+                    alt={poem.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-80" />
+                  <h3 className="absolute bottom-4 left-4 font-serif text-xl font-medium text-foreground group-hover:text-primary transition-colors duration-300">
+                    {poem.title}
+                  </h3>
+                </div>
+                
+                {/* Content */}
+                <div className="p-6">
+                  <div className="font-serif text-sm leading-loose text-foreground/80">
+                    {poem.lines.map((line, lineIndex) => (
+                      <p key={lineIndex} className={line === "" ? "h-4" : ""}>
+                        {line}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>

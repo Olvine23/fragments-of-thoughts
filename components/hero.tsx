@@ -1,14 +1,27 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export function Hero() {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center px-6 py-24">
+    <section className="relative min-h-[90vh] flex items-center justify-center px-6 py-24">
+      {/* Background image with overlay */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src="/images/hero-abstract.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-40"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+      </div>
+      
       {/* Subtle ambient glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
       </div>
       
       <div className="relative max-w-3xl mx-auto text-center">
