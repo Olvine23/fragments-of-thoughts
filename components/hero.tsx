@@ -43,27 +43,35 @@ export function Hero() {
           </p>
         </motion.div>
         
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16"
-        >
-          <nav className="flex items-center justify-center gap-8 text-sm">
-            <a href="#writings" className="text-muted-foreground hover:text-primary transition-colors duration-300">
-              Writings
-            </a>
-            <span className="w-1 h-1 rounded-full bg-border" />
-            <a href="#thoughts" className="text-muted-foreground hover:text-primary transition-colors duration-300">
-              Thoughts
-            </a>
-            <span className="w-1 h-1 rounded-full bg-border" />
-            <a href="#poetry" className="text-muted-foreground hover:text-primary transition-colors duration-300">
-              Poetry
-            </a>
-          </nav>
-        </motion.div>
       </div>
+      
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <a 
+          href="#writings" 
+          className="flex flex-col items-center gap-3 text-muted-foreground hover:text-primary transition-colors duration-300 group"
+        >
+          <span className="text-xs tracking-widest uppercase">Explore</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <svg 
+              className="w-5 h-5" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </motion.div>
+        </a>
+      </motion.div>
     </section>
   )
 }

@@ -2,51 +2,8 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-
-const poems = [
-  {
-    title: "Dusk",
-    image: "/images/poetry-dusk.jpg",
-    lines: [
-      "The sun dips low, a final bow",
-      "to shadows stretching, lengthening now.",
-      "I hold my breath as colors blend—",
-      "another day approaching end.",
-      "",
-      "But endings, too, hold gentle grace,",
-      "like wrinkles on a well-loved face.",
-      "In fading light, I find my peace:",
-      "with every sunset comes release."
-    ]
-  },
-  {
-    title: "Untitled (For You)",
-    image: "/images/poetry-untitled.jpg",
-    lines: [
-      "You exist somewhere between",
-      "my waking and my dreaming—",
-      "a presence felt but never seen,",
-      "always arriving, always leaving.",
-      "",
-      "I have learned to love the space",
-      "you occupy within my chest.",
-      "Even absence has a face",
-      "when you have known someone at their best."
-    ]
-  },
-  {
-    title: "3 AM",
-    image: "/images/poetry-3am.jpg",
-    lines: [
-      "The house breathes differently at night,",
-      "settling into itself like an old friend.",
-      "I trace the ceiling patterns",
-      "and wonder if the moon feels lonely too—",
-      "always watching, never touching,",
-      "loving from an impossible distance."
-    ]
-  }
-]
+import Link from "next/link"
+import { poems } from "@/lib/poems"
 
 export function PoetrySection() {
   return (
@@ -65,41 +22,53 @@ export function PoetrySection() {
         
         <div className="grid md:grid-cols-3 gap-8">
           {poems.map((poem, index) => (
-            <motion.div
-              key={poem.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              viewport={{ once: true }}
-              className="group"
-            >
-              <div className="overflow-hidden rounded-xl bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-500 h-full">
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={poem.image}
-                    alt={poem.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-80" />
-                  <h3 className="absolute bottom-4 left-4 font-serif text-xl font-medium text-foreground group-hover:text-primary transition-colors duration-300">
-                    {poem.title}
-                  </h3>
-                </div>
-                
-                {/* Content */}
-                <div className="p-6">
-                  <div className="font-serif text-sm leading-loose text-foreground/80">
-                    {poem.lines.map((line, lineIndex) => (
-                      <p key={lineIndex} className={line === "" ? "h-4" : ""}>
-                        {line}
-                      </p>
-                    ))}
+            <Link href={`/poetry/${poem.slug}`} key={poem.slug}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                viewport={{ once: true }}
+                className="group cursor-pointer"
+              >
+                <div className="overflow-hidden rounded-xl bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-500 h-full">
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={poem.image}
+                      alt={poem.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-80" />
+                    <h3 className="absolute bottom-4 left-4 font-serif text-xl font-medium text-foreground group-hover:text-primary transition-colors duration-300">
+                      {poem.title}
+                    </h3>
+                  </div>
+                  
+                  {/* Preview */}
+                  <div className="p-6">
+                    <div className="font-serif text-sm leading-loose text-foreground/80 line-clamp-4">
+                      {poem.lines.slice(0, 4).map((line, lineIndex) => (
+                        <p key={lineIndex} className={line === "" ? "h-3" : ""}>
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                    <div className="mt-4 flex items-center text-xs text-primary/70 group-hover:text-primary transition-colors duration-300">
+                      <span>Read full poem</span>
+                      <svg 
+                        className="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
