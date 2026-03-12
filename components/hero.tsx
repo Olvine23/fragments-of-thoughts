@@ -9,7 +9,7 @@ export function Hero() {
       {/* Background image with overlay */}
       <div className="absolute inset-0 overflow-hidden">
         <Image
-          src="/images/hero-abstract.jpg"
+          src="/images/poetry-untitled.jpg"
           alt=""
           fill
           className="object-cover opacity-40"

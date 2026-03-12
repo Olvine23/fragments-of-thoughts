@@ -95,7 +95,7 @@ export function ThoughtCardModal({ thought, isOpen, onClose }: ThoughtCardModalP
             >
               {/* Background image */}
               <Image
-                src="/images/thought-card-bg.jpg"
+                src="/images/card.jpg"
                 alt=""
                 fill
                 className="object-cover"
