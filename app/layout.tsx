@@ -43,8 +43,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${cormorant.variable} ${inter.variable} font-sans antialiased`}>
+    <html lang="en" className='scroll-smooth'>
+      <body className={`${cormorant.variable} ${inter.variable} font-sans antialiased `}>
         {children}
         <Analytics />
       </body>
