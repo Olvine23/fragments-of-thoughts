@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   description: 'A quiet corner of the internet for personal stories, reflections, and poetry.',
   generator: 'v0.app',
   icons: {
-    icon:  './logo.png',
-    apple: '/logo.png',
+    icon:  '/images/logo.png',
+    apple: '/images/logo.png',
   },
 }
 
