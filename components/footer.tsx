@@ -18,7 +18,7 @@ export function Footer() {
         
         <div className="flex items-center justify-center gap-6 mb-8">
           <a 
-            href="#" 
+            href="https://x.com/GeorgeOlivine" 
             className="text-muted-foreground hover:text-primary transition-colors duration-300"
             aria-label="Twitter"
           >
@@ -36,7 +36,7 @@ export function Footer() {
             </svg>
           </a>
           <a 
-            href="mailto:hello@example.com" 
+            href="mailto:olivinegeorge@gmail.com" 
             className="text-muted-foreground hover:text-primary transition-colors duration-300"
             aria-label="Email"
           >
