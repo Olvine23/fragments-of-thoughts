@@ -23,7 +23,7 @@ export function Navbar() {
     { href: isHome ? "#writings" : "/#writings", label: "Writings" },
     { href: isHome ? "#thoughts" : "/#thoughts", label: "Thoughts" },
     { href: isHome ? "#poetry" : "/#poetry", label: "Poetry" },
-    { href: "/write", label: "Write" },
+    // { href: "/write", label: "Write" },
   ]
 
   return (

@@ -1,19 +1,20 @@
 export interface Article {
-  slug: string
-  title: string
-  excerpt: string
-  content: string
-  readingTime: string
-  category: string
-  date: string
-  image: string
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  readingTime: string;
+  category: string;
+  date: string;
+  image: string;
 }
 
 export const articles: Article[] = [
   {
     slug: "the-art-of-letting-go",
     title: "The Art of Letting Go",
-    excerpt: "There comes a moment in every life when holding on becomes more painful than release. I learned this truth not through wisdom, but through the slow unraveling of everything I thought I knew about love and loss.",
+    excerpt:
+      "There comes a moment in every life when holding on becomes more painful than release. I learned this truth not through wisdom, but through the slow unraveling of everything I thought I knew about love and loss.",
     image: "/images/letting-go.jpg",
     readingTime: "8 min read",
     category: "Reflection",
@@ -44,12 +45,13 @@ The love doesn't disappear—it transforms. The memories don't vanish—they set
 
 If you're reading this and holding onto something that hurts to hold, I want you to know: you have permission to let go. Not because the thing doesn't matter, but because you matter more. Because your peace matters. Because the next chapter of your life is waiting, and you can't turn the page with both hands full.
 
-Let go gently. Let go with love. Let go knowing that release is not loss—it's the beginning of something new.`
+Let go gently. Let go with love. Let go knowing that release is not loss—it's the beginning of something new.`,
   },
   {
     slug: "letters-to-my-younger-self",
     title: "Letters to My Younger Self",
-    excerpt: "If I could fold time like paper and slip a note through the crease, what would I say to the person I used to be? Perhaps nothing. Perhaps everything would remain exactly as it should.",
+    excerpt:
+      "If I could fold time like paper and slip a note through the crease, what would I say to the person I used to be? Perhaps nothing. Perhaps everything would remain exactly as it should.",
     image: "/images/letters-younger-self.jpg",
     readingTime: "12 min read",
     category: "Personal",
@@ -94,14 +96,15 @@ You are exactly who you were always meant to become.
 
 If I could actually send these letters back through time, would I? I'm not sure. Part of me wants to spare my younger self the pain, but another part knows that the pain was the teacher. Every struggle carved me into someone capable of writing these words.
 
-Maybe that's the real lesson: we don't need to be rescued from our past. We need to trust that every version of ourselves is doing their best with what they have. Even when it doesn't feel like enough, it is.
+Maybe that's the real lesson: we don't need to be rescued from our past. We need to trust that every version of ourselves is doing their best with what they have. Even when it doesn't feel like enough, it is.\
 
-It always was.`
+It always was.`,
   },
   {
     slug: "the-space-between-heartbeats",
     title: "The Space Between Heartbeats",
-    excerpt: "In meditation, they tell you to focus on the breath. But I've always been more interested in the pauses—those infinite moments where everything stops and the universe holds its tongue.",
+    excerpt:
+      "In meditation, they tell you to focus on the breath. But I've always been more interested in the pauses—those infinite moments where everything stops and the universe holds its tongue.",
     image: "/images/space-between-heartbeats.jpg",
     readingTime: "6 min read",
     category: "Philosophy",
@@ -138,14 +141,14 @@ We are not meant to be in constant motion. We are meant to beat, and then to res
 
 The next time you find yourself rushing through a moment, try this: stop. Not forever—just for a breath. Notice the space between what just happened and what's about to happen. Feel yourself existing in that gap, suspended in pure presence.
 
-This is where you find yourself. Not in the doing, but in the being. Not in the noise, but in the silence. Not in the heartbeat, but in the space between.`
-  }
-]
+This is where you find yourself. Not in the doing, but in the being. Not in the noise, but in the silence. Not in the heartbeat, but in the space between.`,
+  },
+];
 
 export function getArticleBySlug(slug: string): Article | undefined {
-  return articles.find(article => article.slug === slug)
+  return articles.find((article) => article.slug === slug);
 }
 
 export function getAllArticleSlugs(): string[] {
-  return articles.map(article => article.slug)
+  return articles.map((article) => article.slug);
 }

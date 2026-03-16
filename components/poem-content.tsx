@@ -1,9 +1,10 @@
 "use client"
 
+import { Poem } from "@/lib/type"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import type { Poem } from "@/lib/poems"
+ 
 
 interface PoemContentProps {
   poem: Poem
@@ -12,7 +13,6 @@ interface PoemContentProps {
 export function PoemContent({ poem }: PoemContentProps) {
   return (
     <main className="min-h-screen bg-background text-foreground">
-      {/* Back navigation */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -20,8 +20,8 @@ export function PoemContent({ poem }: PoemContentProps) {
         className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/30"
       >
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link 
-            href="/#poetry" 
+          <Link
+            href="/#poetry"
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -29,13 +29,16 @@ export function PoemContent({ poem }: PoemContentProps) {
             </svg>
             <span className="text-sm">Back to Poetry</span>
           </Link>
-          <Link href="/" className="font-serif text-sm text-muted-foreground hover:text-foreground transition-colors">
+
+          <Link
+            href="/"
+            className="font-serif text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
             Fragments
           </Link>
         </div>
       </motion.div>
 
-      {/* Hero Image */}
       <div className="relative h-[60vh] overflow-hidden">
         <Image
           src={poem.image}
@@ -45,8 +48,7 @@ export function PoemContent({ poem }: PoemContentProps) {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
-        
-        {/* Title overlay */}
+
         <div className="absolute inset-0 flex items-end justify-center pb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -57,25 +59,28 @@ export function PoemContent({ poem }: PoemContentProps) {
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light mb-4 text-balance">
               {poem.title}
             </h1>
-            {poem.dedication && (
-              <p className="text-muted-foreground italic text-lg">
-                {poem.dedication}
+
+            <div className="space-y-2">
+              <p className="text-sm text-muted-foreground/80 italic font-serif">
+                — Olvine George
               </p>
-            )}
+              {poem.dedication && (
+                <p className="text-muted-foreground italic text-lg">
+                  {poem.dedication}
+                </p>
+              )}
+            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Poem Content */}
       <div className="relative">
-        {/* Decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-1/4 w-48 h-48 bg-accent/5 rounded-full blur-3xl" />
         </div>
 
         <div className="relative max-w-2xl mx-auto px-6 py-16">
-          {/* Date */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -87,7 +92,6 @@ export function PoemContent({ poem }: PoemContentProps) {
             </span>
           </motion.div>
 
-          {/* Decorative line */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
@@ -95,7 +99,6 @@ export function PoemContent({ poem }: PoemContentProps) {
             className="w-24 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent mx-auto mb-16"
           />
 
-          {/* Poem lines */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -108,14 +111,13 @@ export function PoemContent({ poem }: PoemContentProps) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.7 + index * 0.05 }}
-                className={line === "" ? "h-8" : "mb-2 text-foreground/90"}
+                className={line === "" ? "h-8" : "whitespace-pre-line mb-2 text-foreground"}
               >
                 {line}
               </motion.p>
             ))}
           </motion.div>
 
-          {/* End ornament */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -127,7 +129,6 @@ export function PoemContent({ poem }: PoemContentProps) {
             </svg>
           </motion.div>
 
-          {/* Author note */}
           {poem.note && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -149,7 +150,6 @@ export function PoemContent({ poem }: PoemContentProps) {
             </motion.div>
           )}
 
-          {/* Navigation to other poems */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -157,7 +157,7 @@ export function PoemContent({ poem }: PoemContentProps) {
             className="mt-16 pt-12 border-t border-border/30 text-center"
           >
             <p className="text-sm text-muted-foreground mb-4">Continue exploring</p>
-            <Link 
+            <Link
               href="/#poetry"
               className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-300"
             >

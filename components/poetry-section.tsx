@@ -1,11 +1,16 @@
 "use client"
 
+import { Poem } from "@/lib/type"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { poems } from "@/lib/poems"
+ 
 
-export function PoetrySection() {
+interface PoetrySectionProps {
+  poems: Poem[]
+}
+
+export function PoetrySection({ poems }: PoetrySectionProps) {
   return (
     <section id="poetry" className="px-6 py-24">
       <div className="max-w-5xl mx-auto">
@@ -19,7 +24,7 @@ export function PoetrySection() {
           <h2 className="font-serif text-3xl md:text-4xl font-light mb-4">Poetry</h2>
           <p className="text-muted-foreground">Words arranged in patterns of feeling.</p>
         </motion.div>
-        
+
         <div className="grid md:grid-cols-3 gap-8">
           {poems.map((poem, index) => (
             <Link href={`/poetry/${poem.slug}`} key={poem.slug}>
@@ -31,7 +36,6 @@ export function PoetrySection() {
                 className="group cursor-pointer"
               >
                 <div className="overflow-hidden rounded-xl bg-card/30 border border-border/30 hover:border-primary/30 transition-all duration-500 h-full">
-                  {/* Image */}
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={poem.image}
@@ -44,8 +48,7 @@ export function PoetrySection() {
                       {poem.title}
                     </h3>
                   </div>
-                  
-                  {/* Preview */}
+
                   <div className="p-6">
                     <div className="font-serif text-sm leading-loose text-foreground/80 line-clamp-4">
                       {poem.lines.slice(0, 4).map((line, lineIndex) => (
@@ -54,12 +57,13 @@ export function PoetrySection() {
                         </p>
                       ))}
                     </div>
+
                     <div className="mt-4 flex items-center text-xs text-primary/70 group-hover:text-primary transition-colors duration-300">
                       <span>Read full poem</span>
-                      <svg 
-                        className="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
+                      <svg
+                        className="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform duration-300"
+                        fill="none"
+                        viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
